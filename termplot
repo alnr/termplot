@@ -1,0 +1,15 @@
+#!/bin/bash -e
+#
+# Copyright (c) 2014 Arne Luenser, Goekcen Savasci
+#
+SIZE=
+if [ "$1" == "-f" ]; then
+    SIZE="size $(tput cols),$(tput lines)"
+fi
+
+gnuplot << EOF
+set term dumb $SIZE
+unset key
+plot '-' with lines notitle
+$(cat)
+EOF
